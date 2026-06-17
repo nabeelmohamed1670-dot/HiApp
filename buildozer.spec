@@ -14,7 +14,7 @@ requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 
-icon.filename = icon.png
+icon.filename = logo.png
 
 android.api = 33
 android.minapi = 21
