@@ -5,11 +5,11 @@ package.name = calculator
 package.domain = org.nabeel
 
 source.dir = .
-source.include_exts = py,png,jpg,jpeg,kv
+source.include_exts = py,kv,png,jpg,jpeg
 
 version = 1.0
 
-requirements = python3,kivy==2.3.0
+requirements = python3,kivy
 
 orientation = portrait
 
@@ -19,8 +19,6 @@ icon.filename = icon.png
 
 android.api = 34
 android.minapi = 21
-
-android.permissions = INTERNET
 
 [buildozer]
 
