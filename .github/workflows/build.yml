@@ -8,27 +8,28 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Java
+      - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Install system packages
+      - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git zip unzip autoconf automake libtool \
-            pkg-config zlib1g-dev libncurses5-dev \
-            libncursesw5-dev cmake libffi-dev libssl-dev
+            git zip unzip \
+            autoconf automake libtool pkg-config \
+            zlib1g-dev libncurses5-dev libncursesw5-dev \
+            cmake libffi-dev libssl-dev
 
       - name: Install Buildozer
         run: |
@@ -36,15 +37,15 @@ jobs:
           pip install buildozer==1.5.0
           pip install cython==0.29.37
 
-      - name: Clean Buildozer cache
+      - name: Clean cache
         run: |
           rm -rf ~/.buildozer
           rm -rf .buildozer
 
-      - name: Create Android license files
+      - name: Create Android config
         run: |
           mkdir -p ~/.android
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > ~/.android/repositories.cfg || true
+          touch ~/.android/repositories.cfg
 
       - name: Build APK
         run: |
